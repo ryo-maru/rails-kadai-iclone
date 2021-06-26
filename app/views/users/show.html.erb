@@ -1,2 +1,14 @@
+<%= form_with(model: @user, local: true) do |form| %>
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+  <% if @user.image %>
+    <p>Image: <%= image_tag @user.image.url %></p>
+    <% else %>
+    <%= form.file_field :image %>
+    <%= form.submit "Upload image" %>
+  <% end %>
+<% end %>
+<% if user_path(current_user.id) == user_path(params[:id]) %>
+
+  <% end %>
+<%= link_to 'Back', user_path %>
