@@ -33,6 +33,7 @@ end
 
     respond_to do |format|
       if @picture.save
+        ContactMailer.contact_mail(@picture).deliver
         format.html { redirect_to @picture, notice: "Picture was successfully created." }
         format.json { render :show, status: :created, location: @picture }
       else
