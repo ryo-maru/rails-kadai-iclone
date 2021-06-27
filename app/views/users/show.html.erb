@@ -1,15 +1,17 @@
-<div class="profile-wrap">
-  <div class="row">
-    <div class="col-md-10">
-      <% provide(:title, @user.name) %>
-      <h1>
+<p id="notice"><%= notice %></p>
 
-          <%= @user.image %>
-        
-        <%= @user.name %>
-        <%= link_to "投稿一覧", pictures_path %>
-        <%= link_to "お気に入り一覧", favorites_path %>
-      </h1>
-    </div>
-  </div>
-</div>
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス:<%= @user.email %></p>
+
+<%= link_to "投稿一覧", pictures_path %>
+<%= link_to "お気に入り一覧", favorites_path %>
+
+
+<p>
+  <strong>Image:</strong>
+
+  <%= image_tag @user.image.url %>
+
+</p>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
