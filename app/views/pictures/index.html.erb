@@ -21,8 +21,10 @@
         <td><%= image_tag picture.image.url %></td>
         <td><%= picture.user.name %></td>
         <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if picture.user.name == current_user.name %>
+        <td><%= link_to "edit", edit_picture_path(picture.id), data: { confirm: '本当に編集していいですか？' } %></td>
+        <td><%= link_to 'destroy', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
